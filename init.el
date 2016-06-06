@@ -25,3 +25,13 @@
       initial-major-mode 'ruby-mode)
 
 (load-theme 'solarized-dark t)
+
+;; Show line numbers
+(global-linum-mode)
+
+;; Typography
+(set-face-attribute 'default nil
+                    :family "Source Code Pro"
+                    :height 150
+                    :weight 'normal
+                    :width 'normal)
