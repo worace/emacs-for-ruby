@@ -11,7 +11,10 @@
   (package-refresh-contents))
 
 ; list the packages you want
-(setq package-list '(better-defaults solarized-theme))
+(setq package-list '(better-defaults
+                     solarized-theme
+                     helm-projectile
+                     helm-ag))
 
 ; install the missing packages
 (dolist (package package-list)
@@ -35,3 +38,7 @@
                     :height 150
                     :weight 'normal
                     :width 'normal)
+
+(global-set-key (kbd "M-x") #'helm-M-x)
+(global-set-key (kbd "s-f") #'helm-projectile-ag)
+(global-set-key (kbd "s-t") #'helm-projectile-find-file-dwim)
