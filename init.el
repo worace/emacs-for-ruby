@@ -11,7 +11,7 @@
   (package-refresh-contents))
 
 ; list the packages you want
-(setq package-list '(better-defaults))
+(setq package-list '(better-defaults solarized-theme))
 
 ; install the missing packages
 (dolist (package package-list)
@@ -19,3 +19,9 @@
     (package-install package)))
 
 (require 'better-defaults)
+
+(setq inhibit-splash-screen t
+      initial-scratch-message nil
+      initial-major-mode 'ruby-mode)
+
+(load-theme 'solarized-dark t)
