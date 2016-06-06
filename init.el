@@ -1,6 +1,7 @@
 ; list the repositories containing them
 (setq package-archives '(("elpa" . "http://tromey.com/elpa/")
                          ("gnu" . "http://elpa.gnu.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")))
 
 ; activate all the packages (in particular autoloads)
@@ -14,7 +15,9 @@
 (setq package-list '(better-defaults
                      solarized-theme
                      helm-projectile
-                     helm-ag))
+                     helm-ag
+                     ruby-electric
+                     chruby))
 
 ; install the missing packages
 (dolist (package package-list)
@@ -42,3 +45,7 @@
 (global-set-key (kbd "M-x") #'helm-M-x)
 (global-set-key (kbd "s-f") #'helm-projectile-ag)
 (global-set-key (kbd "s-t") #'helm-projectile-find-file-dwim)
+
+;; Autoclose paired syntax elements like parens, quotes, etc
+(add-hook 'ruby-mode-hook ruby-electric-mode)
+(chruby "2.2.2")
