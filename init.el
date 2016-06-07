@@ -19,7 +19,8 @@
                      ruby-electric
                      seeing-is-believing
                      chruby
-                     inf-ruby))
+                     inf-ruby
+                     ruby-test-mode))
 
 ; install the missing packages
 (dolist (package package-list)
@@ -62,3 +63,14 @@
 
 (autoload 'inf-ruby-minor-mode "inf-ruby" "Run an inferior Ruby process" t)
 (add-hook 'ruby-mode-hook 'inf-ruby-minor-mode)
+
+(require 'ruby-test-mode)
+(add-hook 'ruby-mode-hook 'ruby-test-mode)
+
+(add-hook 'compilation-finish-functions
+          (lambda (buf strg)
+            (switch-to-buffer-other-window "*compilation*")
+            (read-only-mode)
+            (goto-char (point-max))
+            (local-set-key (kbd "q")
+                           (lambda () (interactive) (quit-restore-window)))))
