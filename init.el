@@ -17,7 +17,9 @@
                      helm-projectile
                      helm-ag
                      ruby-electric
-                     chruby))
+                     seeing-is-believing
+                     chruby
+                     inf-ruby))
 
 ; install the missing packages
 (dolist (package package-list)
@@ -42,10 +44,21 @@
                     :weight 'normal
                     :width 'normal)
 
+(require 'helm)
+(require 'helm-projectile)
+(require 'helm-ag)
 (global-set-key (kbd "M-x") #'helm-M-x)
 (global-set-key (kbd "s-f") #'helm-projectile-ag)
 (global-set-key (kbd "s-t") #'helm-projectile-find-file-dwim)
 
 ;; Autoclose paired syntax elements like parens, quotes, etc
-(add-hook 'ruby-mode-hook ruby-electric-mode)
+(require 'ruby-electric)
+(add-hook 'ruby-mode-hook 'ruby-electric-mode)
 (chruby "2.2.2")
+
+(setq seeing-is-believing-prefix "C-.")
+(add-hook 'ruby-mode-hook 'seeing-is-believing)
+(require 'seeing-is-believing)
+
+(autoload 'inf-ruby-minor-mode "inf-ruby" "Run an inferior Ruby process" t)
+(add-hook 'ruby-mode-hook 'inf-ruby-minor-mode)
