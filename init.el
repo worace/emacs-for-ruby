@@ -14,6 +14,7 @@
 ; list the packages you want
 (setq package-list '(better-defaults
                      solarized-theme
+                     helm
                      helm-projectile
                      helm-ag
                      ruby-electric
